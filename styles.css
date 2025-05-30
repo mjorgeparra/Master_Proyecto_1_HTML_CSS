@@ -8,15 +8,15 @@
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
-    background: #f9f9f9;
+    background: #EEEEEE;
     color: #333;
     padding-bottom: 60px; /* Space for footer */
 }
 
 /* Header */
 header {
-    background: #004080;
-    color: white;
+    background: #222831;
+    color: #EEEEEE;
     padding: 20px 0;
     text-align: center;
 }
@@ -36,7 +36,7 @@ nav ul li {
 }
 
 nav a {
-    color: white;
+    color: #EEEEEE;
     text-decoration: none;
     font-weight: bold;
 }
@@ -53,7 +53,7 @@ main {
 }
 
 section {
-    background: white;
+    background: #EEEEEE;
     padding: 20px;
     margin-bottom: 30px;
     border-radius: 8px;
@@ -61,13 +61,13 @@ section {
 }
 
 h2 {
-    color: #004080;
+    color: #393E46;
     margin-bottom: 10px;
 }
 
 h3 {
     margin-top: 20px;
-    color: #0066cc;
+    color: #00ADB5;
 }
 
 /* Contact Section */
@@ -89,9 +89,11 @@ h3 {
 footer {
     text-align: center;
     padding: 15px;
-    background: #004080;
-    color: white;
-    position: fixed;
-    width: 100%;
-    bottom: 0;
+    background: #222831;
+    color: #EEEEEE;
+    width: 100%; /* Full width */
+    max-width: 900px; /* Match the main content */
+    margin: 0 auto; /* Center the footer */
+    position: relative; /* Change to relative if you want it in the normal flow */
+    bottom: 0; /* Keep this if you want it at the bottom of the page */
 }
