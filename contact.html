@@ -30,49 +30,38 @@
     <h2>Contact</h2>
     <p>
     Thank you for taking the time to view my website and projects.<br/>
-    To get in touch with me, please use the contact details below:
+    To get in touch with me, please use the below contact form:
     </p>
+    <br>
     <form>
-    <label for="nombre">Nombre:</label>
-    <input type="text" id="nombre" name="nombre">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name">
     <label for="email">Email:</label>
     <input type="email" id="email" name="email">
-    <label for="mensaje">Mensaje:</label>
-    <textarea id="mensaje" name="mensaje"></textarea>
-    <button type="submit">Enviar</button>
+    <label for="message">Message:</label>
+    <textarea id="message" name="Message"></textarea>
+    <button type="submit">Submit</button>
     </form>
     <br />
-    <ul>
-        <li>
-            <img src="./assets/icons/mail.svg" alt="Mail icon" class="icon-style">
-            <a href="mailto:jp.outthink645@passmail.net">jp.outthink645@passmail.net</a>
-        </li>
-        <li>
-            <img src="./assets/icons/linkedin.svg" alt="LinkedIn icon" class="icon-style">
-            <a href="https://www.linkedin.com/in/mjorgeparra" target="_blank" rel="noopener noreferrer">https://www.linkedin.com/in/mjorgeparra</a>
-        </li>
-        <li>
-            <img src="./assets/icons/github.svg" alt="GitHub icon" class="icon-style">
-            <a href="https://github.com/mjorgeparra" target="_blank" rel="noopener noreferrer">https://github.com/mjorgeparra</a>
-        </li>
-        <li>
-            <img src="./assets/icons/download.svg" alt="Download icon" class="icon-style">>
-            <a href="./assets/documents/CV-Jorge-Parra.pdf" download class="download-btn">Download my Resume in PDF format</a>
-        </li>
-    </ul>
 </section>
 
 <footer>
-    <br>
-    <img src="./assets/icons/mail.svg" alt="Mail icon" class="icon-style">
-    <a href="mailto:jp.outthink645@passmail.net">jp.outthink645@passmail.net</a>
-    <img src="./assets/icons/linkedin.svg" alt="LinkedIn icon" class="icon-style">
-    <a href="https://www.linkedin.com/in/mjorgeparra" target="_blank" rel="noopener noreferrer">https://www.linkedin.com/in/mjorgeparra</a>
-    <img src="./assets/icons/github.svg" alt="GitHub icon" class="icon-style">
-    <a href="https://github.com/mjorgeparra" target="_blank" rel="noopener noreferrer">https://github.com/mjorgeparra</a>
-    <img src="./assets/icons/download.svg" alt="Download icon" class="icon-style">>
-    <a href="./assets/documents/CV-Jorge-Parra.pdf" download class="download-btn">Download my Resume in PDF format</a>
-    <br />
-    <p>This website was created by Jorge Parra. All rights reserved.</p>
-    <p>This website is for informational purposes only and does not constitute professional advice.</p>
+    <div class="social-links">
+        <a href="mailto:jp.outthink645@passmail.net" aria-label="Email">
+            <img src="./assets/icons/mail.svg" alt="Mail icon" class="icon-style">
+        </a>
+        <a href="https://www.linkedin.com/in/mjorgeparra" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <img src="./assets/icons/linkedin.svg" alt="LinkedIn icon" class="icon-style">
+        </a>
+        <a href="https://github.com/mjorgeparra" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+            <img src="./assets/icons/github.svg" alt="GitHub icon" class="icon-style">
+        </a>
+        <a href="./assets/documents/CV-Jorge-Parra.pdf" download aria-label="Download Resume">
+            <img src="./assets/icons/download.svg" alt="Download icon" class="icon-style">
+        </a>
+    </div>
+    <div class="footer-text">
+        <p>This website was created by Jorge Parra. All rights reserved.</p>
+        <p>This website is for informational purposes only and does not constitute professional advice.</p>
+    </div>
 </footer>
