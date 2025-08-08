@@ -10,7 +10,6 @@
     <!-- Link to external stylesheet -->
     <link rel="stylesheet" href="./styles.css">
 </head>
-<br>
 
 <header>
     <h1>Welcome to My Professional Profile</h1>
@@ -24,83 +23,88 @@
     </nav>
 </header>
 
-    <br id="projects">
-        <h2>Project 1 - Setting Up EJBCA In Your Home Lab</h2>
+    <section id="project 1">
+        <h2>Project 1</h2>
+        <h3>Setting Up EJBCA In Your Home Lab</h3>
         <p>This guide will walk you through setting up EJBCA Community Edition in your home lab environment using Docker.</p>
         <p>To begin, ensure you have:</p>
-        <ul>
-            <li>- Docker installed on your system</li>
-            <li>- Sufficient resources (minimum 2GB RAM)</li>
-            <li>- Network access for downloading Docker images</li>
-            <li>- Administrative privileges</li>
-        </ul>
-        <ol>
-            <li>If you meet the above requirements, follow these instructions:</li>
-            <li>1. Pull the EJBCA Docker image using:</li>
+            <ul>
+            <li>Docker installed on your system</li>
+            <li>Sufficient resources (minimum 2GB RAM)</li>
+            <li>Network access for downloading Docker images</li>
+            <li>Administrative privileges</li>
+            </ul>
+        <p>If you meet the above requirements, follow these instructions:</p>
+            <ol>
+            <li>Pull the EJBCA Docker image using:</li>
                 <strong>sudo docker pull keyfactor/ejbca-ce</strong>
             </li>
-            <li>2. Run the EJBCA Community Edition container with proper port mapping and hostname:</li>
+            <li>Run the EJBCA Community Edition container with proper port mapping and hostname:</li>
                 <strong>sudo docker run -d -p 80:8080 -p 443:8443 -h localhost -e TLS_SETUP_ENABLED="true" keyfactor/ejbca-ce</strong>
-            <li>3. Check if the container is running properly with: </li>
+            <li>Check if the container is running properly with: </li>
                 <strong>sudo docker ps</strong>
-            <li>4. Retrieve the container logs to find the auto-generated SuperAdmin password using:</li>
+            <li>Retrieve the container logs to find the auto-generated SuperAdmin password using:</li>
             <strong>sudo docker logs c0d4fdad387b</strong>
-            <li>5. Open the <strong>ejbca.log</strong> file and search for the SuperAdmin password.</li>
-            <li>6. Navigate to the EJBCA RA interface in your web browser at: </li>
+            <li>Open the <strong>ejbca.log</strong> file and search for the SuperAdmin password.</li>
+            <li>Navigate to the EJBCA RA interface in your web browser at: </li>
             <strong>https://192.168.31.1/ejbca/ra/enrollwithusername.xhtml</strong> <em>(replace 192.168.31.1 with your actual server IP address).</em>
-            <li>7. Login with username <strong>superadmin</strong> and the password found in the logs to generate a SuperAdmin certificate with RSA key algorithm, 2048 bits key size, and an appropriate certificate profile for admin access.</li>
-            <li>8. After generating the certificate, install it in your browser's Personal Certificate Store.</li>
-            <li>9. Finally, navigate to the EJBCA Admin Web interface at:</li>
+            <li>Login with username <strong>superadmin</strong> and the password found in the logs to generate a SuperAdmin certificate with RSA key algorithm, 2048 bits key size, and an appropriate certificate profile for admin access.</li>
+            <li>After generating the certificate, install it in your browser's Personal Certificate Store.</li>
+            <li>Finally, navigate to the EJBCA Admin Web interface at:</li>
             <strong>https://192.168.31.1/ejbca/adminweb/</strong>, select the newly generated SuperAdmin certificate, and gain full administrative access to EJBCA.
-            <li>10. Wowww!!! Congratulations, you have successfully set up EJBCA in your home lab!!!</li>
-        </ol>
-        </br>
-        <h2>Project 2 - Issuing a Client Authentication Certificate using EJBCA</h2>
+            </ol>
+        <p>Wowww!!! Congratulations, you have successfully set up EJBCA in your home lab!!!</p>
+    </section>
+    <section id="project 2">
+        <h2>Project 2</h2>
+        <h3>Issuing a Client Authentication Certificate using EJBCA</h3>
         <p>This guide will how you how to issue a Client Authentication Certificate using your newly deployed EJBCA.</p>
-        <ol>
-            <li>Please follow the below instructions:</li>
-            <li>1. Open your browser and go to your EJBCA:</li>
+        <p>Please follow the below instructions:</p>
+            <ol>
+            <li>Open your browser and go to your EJBCA:</li>
                 <strong>https://192.168.31.1/ejbca/adminweb/</strong>
             </li>
-            <li>2. Log in with your admin credentials. <em>(Use the SuperAdmin Certificate from the previous lab)</em></li>
-            <li>3. Create a ClientAuth Certificate Profile:</li>
+            <li>Log in with your admin credentials. <em>(Use the SuperAdmin Certificate from the previous lab)</em></li>
+            <li>Create a ClientAuth Certificate Profile:</li>
                 <strong> EJBCA > CA Functions > Certificate Profiles > ENDUSER > Clone > ClientAuth > Create from template.</strong>
-            <li>4. Edit the new ClientAuth Certificate Profile:</li>
+            <li>Edit the new ClientAuth Certificate Profile:</li>
             <strong> Set Validity or End Date to 1y (1 year) > Check Client Authentication > Save.</strong>
-            <li>5. Create a ClientAuth End Entity Profile:</li>
+            <li>Create a ClientAuth End Entity Profile:</li>
             <strong> EJBCA > RA Functions > Manage End Entity Profiles > Add End Entity Profile > Name it ClientAuth > Add Profile.</strong>
-            <li>6. Configure the new End Entity Profile: </li>
+            <li>Configure the new End Entity Profile: </li>
             <strong>Subject DN Attributes > Add > emailAddress > Default Certificate Profile to ClientAuth (unselect others) > Set Default Token to P12 file > Save.</strong>
-            <li>7. Add a New End Entity: </li>
+            <li>Add a New End Entity: </li>
             <strong> EJBCA > RA Functions > Add End Entity > Choose a unique username > Set a password for certificate pickup > Use data from the e-mail address field.</strong>
-            <li>8. Pick Up the Certificate at:</li>
+            <li>Pick Up the Certificate at:</li>
             <strong> https://192.168.31.1/ejbca/ra/#loaded > Enroll > Enter the username and password you set earlier > Select 2048 (key size) > Download P12 to get your certificate file.</strong>
-            <li>9. Remember to download the CA Certificate too:</li>
+            <li>Remember to download the CA Certificate too:</li>
             <strong> Go to CA Certificates and CRLs in EJBCA > Download the CA Certificate in PEM format. </strong>
-            <li>10. Finally, import the Certificate into Your Browser:</li>
+            <li>Finally, import the Certificate into Your Browser:</li>
             <strong> Browser Settings > Security > Manage Certificates > Import > Select the downloaded P12 file > Enter the Enrollment Password. </strong>
-            <li>11. Wowww!!! Congratulations, you have successfully issued and installed your Client Authentication Certificate.</li>
-        </ol>        
-        </br>
-        <h2>Project 3 - Creating a Root Certificate Authority (Root CA) in EJBCA</h2>
+            </ol>
+        <p>Wowww!!! Congratulations, you have successfully issued and installed your Client Authentication Certificate.</p>       
+    </section>
+    <section id="project 3">
+        <h2>Project 3</h2>
+        <h3>Creating a Root Certificate Authority (Root CA) in EJBCA</h3>
         <p>This guide will how you how to create a Root Certificate Authority (Root CA) in your newly deployed EJBCA.</p>
-        <ol>
-            <li>Please follow the below instructions:</li>
-            <li>1. Access EJBCA Admin Web:</li>
+        <p>Please follow the below instructions:</p>
+            <ol>
+            <li>Access EJBCA Admin Web:</li>
                 <strong>https://192.168.31.1/ejbca/adminweb/</strong>
             </li>
-            <li>2. Log in with your admin credentials. <em>(Use the SuperAdmin Certificate from the previous lab)</em></li>
-            <li>3. Create a Certificate Profile for the Root CA:</li>
+            <li>Log in with your admin credentials. <em>(Use the SuperAdmin Certificate from the previous lab)</em></li>
+            <li>Create a Certificate Profile for the Root CA:</li>
                 <strong> EJBCA > CA Functions > Certificate Profiles > ROOTCA > Clone > Name it MyRootCAProfile > Create from template.</strong>
-            <li>4. Edit the New Certificate Profile:</li>
+            <li>Edit the New Certificate Profile:</li>
             <strong> Key Algorithm to RSA > Key Length to 4096 > Validity to 30y > Disable Authority Key ID, Subject Alternative Name, Issuer Alternative Name, LDAP DN Order > Save the profile.</strong>
-            <li>5. Create a Crypto Token:</li>
+            <li>Create a Crypto Token:</li>
             <strong> EJBCA > CA Functions > Crypto Tokens > New > MyFirstRootCACryptoToken > Type to SOFT HSM for home lab; use HSM for production > Authentication Code (write this down!) > Create 2048 key pair > Save the Crypto Token.</strong>
-            <li>6. Create the Root CA: </li>
+            <li>Create the Root CA: </li>
             <strong> EJBCA > CA Functions > Certificate Authorities > Add CA > MyFirstRootCA > Create > Select the CA settings from earlier > Create Root CA.</strong>
-            <li>7. Wowww!!! Congratulations, you have successfully created your first Root Certificate Authority in EJBCA.</li>
-        </ol>
-    </br>
+            </ol>
+        <p>Wowww!!! Congratulations, you have successfully created your first Root Certificate Authority in EJBCA.</p>
+    </section>
 
 <footer>
     <div class="social-links">
