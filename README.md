@@ -9,9 +9,6 @@ Responsive design
 
 📌 Sections
 - About Me
-- Education
-- Work History
-- Certifications
-- Skills
-- Languages
-- Contact Info
+- Resume
+- Projects
+- Contact

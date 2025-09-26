@@ -105,6 +105,47 @@
             </ol>
         <p>Wowww!!! Congratulations, you have successfully created your first Root Certificate Authority in EJBCA.</p>
     </section>
+    <section id="project 4">
+        <h2>Project 4</h2>
+        <h3>Importing a Virtual Machine OVA into ProxMox</h3>
+        <p>This guide will how you how to import a Virtual Machine OVA into ProxMox.</p>
+        <p>Please follow the below instructions:</p>
+            <ol>
+            <li>Log into ProxMox VE either via SSH or the web-based shell</li>
+            <li>Make a working directory for your .OVA file</li>
+                <strong>mkdir ova_import && cd ova_import</strong>
+            <li>Use Proxmox Shell to download the OVA onto our Proxmox server:</li>
+                <strong>wget -O ACME_2019_All_Versions.ova https://rtcustomer.blob.core.windows.net/rtcustomerdeploy/ACME_2019_All_Versions.ova</strong>
+            <li>Use Proxmox Shell to download the OVA onto our Proxmox server:</li>
+            <strong>tar -xvf ACME_2019_All_Versions.ova</strong>
+            <li>Create a new VM on the top right of Proxmox VE web interface:</li>
+            <strong>- General Tab > VM ID - Assign A Number</strong><br/>
+            <strong>- General Tab > Name - ACME-2019</strong><br/>
+            <strong>- OS Tab > Do not use any media</strong><br/>
+            <strong>- System Tab > Bios > OVMF (UEFI)</strong><br/>
+            <strong>- Disk Tab > Leave the default one and next</strong><br/>
+            <strong>- CPU Tab > Assign it 1 Socket and 4 Cores</strong><br/>
+            <strong>- Memory Tab > Assign it 8192 MiB</strong><br/> 
+            <li>Review the parameters and finally click on “Finish” on the bottom right.</li>
+            <li>Go to your newly created VM in my case 100 > Click on Hardware.</li>
+            <li>Detach and remove the current Hard Disk and remove the CD/DVD Drive and the EFI Disk.</li>
+            <li>Return Proxmox Shell and go to the working directory we created earlier</li>
+            <strong>cd ova_import</strong>
+            <li>Import the disk you extracted earlier into the new VM specifiying its VM ID in my case 100 and the format raw or qcow2 depending on client.</li>
+            <strong>qm importdisk 100 ACME_2019_All_Versions-disk1.vmdk local-lvm --format raw</strong>
+            <li>Go back to your VM > Hardware and double-click the the new Unused Disk to add it to the VM and enable the following:</li>
+            <strong>Add Unused Disk > Enable SATA, SSD Emulation, Discard > Add</strong>
+            <li>Enable Sata0 and put Sata0 above Net0 on the Boot Order:</li>
+            <strong>Options > Boot Order > Sata0 first</strong>
+            <li>Lets try to start the VM now</li>
+            <strong>VM ID > Console > Start</strong>
+            <li>You should have successfully imported your VM and if you press <strong>Ctrl-Alt-Del</strong>, you should see your VMs IP address</li>
+            <li>You may now go to a browser to <strong>https//YourVMsIPAddress</strong> and you should see Redtrust Administration Console</li>
+            <li>After confirming the imported VM is working, return to the Proxmox VEShell and run the following command to clean up the downloaded ova data:</li>
+            <strong>rm ova_import/ -r</strong>
+            </ol>
+        <p>Wowww!!! Congratulations, you have successfully imported a Virtual Machine OVA into ProxMox</p>
+    </section>
 
 <footer>
     <div class="social-links">
